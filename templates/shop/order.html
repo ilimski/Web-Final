@@ -1,0 +1,110 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!--========== BOX ICONS ==========-->
+        <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+
+        <!--========== CSS ==========-->
+        <link rel="stylesheet" href="{% static 'devices/assets/css/styles.css' %}">
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+
+
+        <title>Devices</title>
+    </head>
+    <body>
+
+        <!--========== SCROLL TOP ==========-->
+        <a href="#" class="scrolltop" id="scroll-top">
+            <i class='bx bx-chevron-up scrolltop__icon'></i>
+        </a>
+
+        <!--========== HEADER ==========-->
+        <header class="l-header" id="header">
+            <nav class="nav bd-container">
+                <a href="/" class="nav__logo">Electronic Paradise</a>
+
+                <div class="nav__menu" id="nav-menu">
+                    <ul class="nav__list">
+                        <li class="nav__item"><a href="{% url 'account_logout' %}" class="nav__link">Logout</a></li>
+
+                        <li><i class='bx bx-moon change-theme' id="theme-button"></i></li>
+                    </ul>
+                </div>
+
+                <div class="nav__toggle" id="nav-toggle">
+                    <i class='bx bx-menu'></i>
+                </div>
+            </nav>
+        </header>
+
+        <main class="l-main">
+            <!--========== MENU ==========-->
+            <section class="menu section bd-container" id="menu">
+                <span class="section-subtitle">you are ordering</span>
+                <h2 class="section-title">{{ device.name }}</h2>
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    {{ form.non_field_errors }}
+                    <div class="inputs">
+                        {{ form.count.errors }}
+                        {{ form.device.errors }}
+                        {{ form.user.errors }}
+                        <input type="number" name="count" min="0" required="" id="id_count" placeholder="Quantity">
+                        <button class="button" type="submit" style="border: none;">Order now</button>
+                    </div>
+                </form>
+            </section>
+
+
+        <!--========== FOOTER ==========-->
+        <footer class="footer section bd-container">
+            <div class="footer__container bd-grid">
+                <div class="footer__content">
+                    <a href="#" class="footer__logo">Electronic Paradise</a>
+                    <span class="footer__description">Game shop</span>
+                    <div>
+                        <a href="#" class="footer__social"><i class='bx bxl-facebook'></i></a>
+                        <a href="#" class="footer__social"><i class='bx bxl-instagram'></i></a>
+                        <a href="#" class="footer__social"><i class='bx bxl-twitter'></i></a>
+                    </div>
+                </div>
+
+
+
+                <div class="footer__content">
+                    <h3 class="footer__title">Information</h3>
+                    <ul>
+                        <li><a href="#" class="footer__link">Game shop</a></li>
+                        <li><a href="#" class="footer__link">Computer club</a></li>
+                        <li><a href="#" class="footer__link">Championships</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer__content">
+                    <h3 class="footer__title">Address</h3>
+                    <ul>
+                        <li>Bishkek City</li>
+                        <li>Soviet, 199</li>
+                        <li>999 - 888 - 777</li>
+                        <li>devices@email.com</li>
+                    </ul>
+                </div>
+            </div>
+
+            <p class="footer__copy">&#169; 2020 Electronic Paradise. All right reserved</p>
+        </footer>
+
+        <!--========== SCROLL REVEAL ==========-->
+        <script src="https://unpkg.com/scrollreveal"></script>
+
+        <!--========== MAIN JS ==========-->
+        <script src="{% static 'devices/assets/js/main.js' %}"></script>
+        </main>
+    </body>
+</html>
